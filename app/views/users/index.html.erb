@@ -5,20 +5,17 @@
     <div class="list-group-item user-list">
       <h2>ユーザー一覧</h2>
       <!-- ↓eachメソッドを用いてユーザー一覧を表示しましょう -->
-
+        <% @users.each do |u| %>
         <div class="list-group-item">
         	<h4 class="user">
 			      <span class="user-name">
 				      <!-- link_toを使用しユーザーページへのリンクを作る（表示するテキストはemail） -->
-			        
+			        <%= link_to u.email, user_path(u.id) %>
 			      </span>
 			    </h4>
 	      </div>
-      
+      <% end %>
       <!-- ↑each終わり -->
     </div>
   </div>
 </div>
-
-
-

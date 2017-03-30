@@ -16,13 +16,13 @@ gem 'coffee-rails', '~> 4.1.0'
 
 
 # therubyracerを追加
-# gem 'therubyracer', platforms: :ruby
+gem 'therubyracer', platforms: :ruby
 
 # deviseを追加
-
+gem 'devise'
 
 # kaminariを追加
-
+gem 'kaminari'
 
 
 # Use jquery as the JavaScript library
@@ -33,7 +33,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
-gem 'less-rails' 
+gem 'less-rails'
 gem 'twitter-bootstrap-rails' #bootstrap導入用gem
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
