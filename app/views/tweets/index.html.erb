@@ -9,7 +9,8 @@
               <span class="user-name">
                 <strong>
                   <!-- ↓current_userのemailを表示しよう -->
-                  <%= current_user.email %>
+                  <%#= current_user.email %>
+                  <%= link_to current_user.name, user_path(current_user) %>
                 </strong>
               </span>
             </div>
@@ -65,7 +66,8 @@
               <span class="user-name">
                 <strong>
                   <!-- ↓ツイートに紐付いたUserのemailの表示 -->
-                  <%= t.user.email %>
+                  <%#= t.user.email %>
+                  <%= link_to t.user.name, user_path(t.user) %>
                 </strong>
               </span>
               <span class="time pull-right">
@@ -86,12 +88,17 @@
                   <% if t.favorited_by? current_user %>
 
                     <!-- ↓お気に入り解除ボタンの設置 -->
-                    <%= link_to "お気に入りの解除", tweet_favorites_path(t), method: :delete %>
+                    <%= link_to tweet_favorites_path(t), method: :delete do %>
+                      <i class="fa fa-heart" aria-hidden="true"></i>
+                    <% end %>
                   <% else %>
 
                     <!-- ↓お気に入り登録するボタンの設置 -->
-                    <%= link_to "お気に入りの登録", tweet_favorites_path(t), method: :post %>
+                    <%= link_to tweet_favorites_path(t), method: :post do %>
+                      <i class="fa fa-heart-o" aria-hidden="true"></i>
+                    <% end %>
                   <% end %>
+                  <%= t.favorites.count %>
                </div>
               <!-- ↑お気に入りボタンの実装（発展課題） -->
 

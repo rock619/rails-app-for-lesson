@@ -8,7 +8,8 @@
 		<% end %>
 		<span class="user-name">
 			<!-- ユーザーのemailを表示 -->
-			<%= @user.email %>
+			<%#= @user.email %>
+			<%= link_to @user.name, user_path(@user) %>
 		</span>
 	</div>
 	<ul class="nav nav-tabs nav-justified">
@@ -49,7 +50,8 @@
 				<h4 class="user">
 					<span class="user-name">
 						<!-- link_toを使用しユーザーページへのリンクを作る（表示するテキストはemails） -->
-						<%= link_to t.user.email, user_path(t.user.id) %>
+						<%#= link_to t.user.email, user_path(t.user) %>
+						<%= link_to t.user.name, user_path(t.user) %>
 					</span>
 					<span class="time pull-right">
 						<%= distance_of_time_in_words_to_now(t.created_at) %>
