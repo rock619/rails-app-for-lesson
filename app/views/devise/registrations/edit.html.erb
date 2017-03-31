@@ -4,8 +4,13 @@
   <%= devise_error_messages! %>
 
   <div class="field col-md-offset-4 col-md-4">
+    <%= f.label :name %><br />
+    <%= f.email_field :name, autofocus: true %>
+  </div>
+
+  <div class="field col-md-offset-4 col-md-4">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+    <%= f.email_field :email %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
