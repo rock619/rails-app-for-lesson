@@ -11,7 +11,22 @@
 			<%#= @user.email %>
 			<%= link_to @user.name, user_path(@user) %>
 		</span>
+		<% if @user != current_user %>
+			<% if @user.followed_by? current_user %>
+				<%= link_to "フォロー解除", user_relationships_path(@user), method: :delete %>
+			<% else %>
+				<%= link_to "フォロー", user_relationships_path(@user), method: :post %>
+			<% end %>
+		<% end %>
 	</div>
+	<ul class="nav nav-tabs nav-justified">
+		<li>
+			<%= link_to "フォロー " + @user.followings.count.to_s, follows_user_path(@user) %>
+		</li>
+		<li>
+			<%= link_to "フォロワー " + @user.followers.count.to_s, followers_user_path(@user) %>
+		</li>
+	</ul>
 	<ul class="nav nav-tabs nav-justified">
 		<li {class: action_name == "show" ? "active" : nil}>
 			<%= link_to user_path(@user) do %>
@@ -45,7 +60,7 @@
 		</div>
 
 		<!-- ユーザーに紐付いたツイートを取得し、eachメソッドでツイート分表示 -->
-		<% @user.favorites.map{ |f| f.tweet }.each do |t| %>
+		<% @tweets.each do |t| %>
 			<div class="list-group-item">
 				<h4 class="user">
 					<span class="user-name">

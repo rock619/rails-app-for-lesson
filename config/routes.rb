@@ -9,19 +9,20 @@ Rails.application.routes.draw do
 # ---------------------------------------------
 # 発展課題
   # resourcesを制限する場合
-    resources :users, only: [:index, :show] do
-      get :favorites, on: :member
-    end
-
+  resources :users, only: [:index, :show] do
+    resource :relationships, only: [:create, :destroy]
+    get :favorites, on: :member
+    get :follows, on: :member
+    get :followers, on: :member
+  end
 
   #お気に入り機能をツイートに紐付ける場合
-    resources :tweets do
-      resource :favorites, only: [:create, :destroy]
-    end
+  resources :tweets do
+    resource :favorites, only: [:create, :destroy]
+  end
 # ---------------------------------------------
 
 
 # ルートパス　でアクセスした時にツイート一覧へのルーティングを定義
   root 'tweets#index'
-
 end
